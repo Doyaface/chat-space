@@ -14,7 +14,7 @@
 ## groupテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group_name|varchar(255)|null: false|
+|name|varchar(255)|null: false|
 
 
 ### Association
@@ -36,7 +36,7 @@
 ## messegeテーブル
 |Column|Type|Options|
 |------|----|-------|
-|bodt|text|null: false|
+|body|text|check(image!= null or body = null)|
 |image|string||
 |group_id|references|null: false, forex1ign_key: true|
 |user_id|references|null: false, foreign_key: true|
