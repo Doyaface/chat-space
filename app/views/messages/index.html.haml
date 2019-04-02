@@ -6,31 +6,35 @@
   %title ChatSpace
 %body
   .chat-side
-    .side-header
+    %header.side-header
       .side-header__box
         %p.side-header__box__user-name testuser
         %ul.side-header__box__menu
           %li.side-header__box__menu__new_group
           %li.side-header__box__menu__edit_user
-    .chat-side__groups
+    .groups
       .group
         .group__group-name group name
         .group__latest-message latest message
   .chat-main
-    .main-header
+    %header.main-header
       .main-header__left-box
         .main-header__left-box__current-group current group
-        .main-header__left-box__member-list Member:test
+        %ul.main-header__left-box__member-list
+          Member:
+          %li.main-header__leftbox__member-list__member groupmember
       %a.main-header__right-box
-        .main-header__right-box__edit-btn edit
-    .messeges
-      .messege
-        .messege__upper-info
-          %p.message-upper-info__talker talker
-          %p.message-upper-info__date 2019/4/1(Mon)00:00:00
+        .main-header__right-box__edit-btn Edit
+    .messages
+      .message
+        .message__upper-info
+          %p.message__upper-info__talker talker
+          %p.message__upper-info__date 2019/4/1(Mon)00:00:00
         %p.message__text message text
     .form
-      .input-box
-        .input-box__text message content
-        %i.input-box__image
-      .submit-btn SEND
+      %form.new_message
+        .input-box
+          %input#message_content.input-box__text{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
+          %label.input-box__image
+            %i.fa.fa-image
+        %input.submit-btn{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
