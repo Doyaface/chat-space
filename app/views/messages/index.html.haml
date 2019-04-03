@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-%html{:lang => "ja"}
+%html{ lang: "ja"}
 %head
-  %meta{:charset => "UTF-8"}/
-  %link{:rel => "stylesheet", :href => "application.scss", :type => "text/scss"}/
+  %meta{charset: "UTF-8"}/
+  %link{rel: "stylesheet", href: "application.scss", type: "text/scss"}/
   %title ChatSpace
 %body
   .flash-box
@@ -38,8 +38,8 @@
     .form
       %form.new_message
         .input-box
-          %input#message_content.input-box__text{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
+          %input#message_content.input-box__text{name:  "message[content]", placeholder: "type a message", type: "text"}/
           %label.input-box__image
             %i.fa.fa-image
-            %input.input-box__image__file{:name => "message[image]" ,:type => "file"}/
-        %input.submit-btn{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
+            %input.input-box__image__file{name: "message[image]" , type: "file"}/
+        %input.submit-btn{"data-disable-with": "Send", name: "commit", type: "submit", value: "Send"}/
