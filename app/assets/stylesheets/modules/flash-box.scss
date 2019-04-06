@@ -4,8 +4,10 @@
   font-weight: lighter;
   text-align:center;
   width:100vw;
+  .alert{
+    background-color: #F35500;
+  }
   .notice{
-    background-color: $light-blue
-
+    background-color: $light-blue;
   }
 }

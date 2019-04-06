@@ -4,6 +4,7 @@
 @import"modules/flash-box";
 @import"modules/chat-side";
 @import"modules/chat-main";
+@import "modules/user";
 
 div{
   display: block;
@@ -13,6 +14,9 @@ div{
   box-sizing: border-box;
 }
 
+a{
+  color: $white;
+}
 
 
 
