@@ -1,4 +1,4 @@
 class GroupUser < ApplicationRecord
   belongs_to :group
-  belogngs_to :user
+  belongs_to :user
 end
