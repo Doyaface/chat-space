@@ -6,7 +6,7 @@ function buildHTML(message){
                 </img>`
                 :"";
 
-  var html =`<div class="message">
+  var messageHtml =`<div class="message">
             <div class="message__upper-info">
               <div class="message__upper-info__talker">
                 ${ message.user_name }
@@ -21,9 +21,9 @@ function buildHTML(message){
               </p>
                ${imagecheck}
             </div>`
-  return html;
+  return messageHtml;
 }
-function scroll(){
+function scrollToBottom(){
   $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight});
 }
   $('#new_message').on('submit',function(e){
@@ -39,13 +39,13 @@ function scroll(){
       contentType: false
     })
   
-    .done(function(data){
-      var html = buildHTML(data);
+    .done(function(messageFormData){
+      var html = buildHTML(messageFormData);
       $('.messages').append(html);
       $('.input-box__text').val("");
       $('.input-box__image__file').val("");
       $('.submit-btn').prop('disabled', false);
-      scroll()
+      scrollToBottom()
     })
     .fail(function(){
       alert('error')
