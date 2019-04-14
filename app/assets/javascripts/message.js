@@ -1,7 +1,12 @@
 $(document).on('turbolinks:load', function(){ 
 $(function(){
 function buildHTML(message){
-var html =`<div class="message">
+  var imagecheck =(message.image)
+                ?` <img class="message__text__image" src=${message.image}> 
+                </img>`
+                :"";
+
+  var html =`<div class="message">
             <div class="message__upper-info">
               <div class="message__upper-info__talker">
                 ${ message.user_name }
@@ -10,10 +15,12 @@ var html =`<div class="message">
                 ${ message.time}
               </div>
             </div>
-            <p class="message_text">
-              ${ message.body}
-            </p>
-          </div>`;
+            <div class="message_text">
+              <p>
+                ${ message.body}
+              </p>
+               ${imagecheck}
+            </div>`
   return html;
 }
 function scroll(){
@@ -36,6 +43,7 @@ function scroll(){
       var html = buildHTML(data);
       $('.messages').append(html);
       $('.input-box__text').val("");
+      $('.input-box__image__file').val("");
       $('.submit-btn').prop('disabled', false);
       scroll()
     })
