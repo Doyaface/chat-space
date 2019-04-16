@@ -48,11 +48,10 @@ $(document).on('turbolinks:load', function(){
         }
       })
       .fail( function() {
-        console.log
-        // alert('ユーザー検索に失敗しました');
+        alert('ユーザー検索に失敗しました');
       })
     });
-    
+
       $(document).on("click", ".user-search-add", function(){
         $('#chat-group-users').val();
           var userId = $(this).data('user-id');
