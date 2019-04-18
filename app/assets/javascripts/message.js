@@ -42,7 +42,7 @@ $(document).on('turbolinks:load', function(){
         .done(function(messageFormData){
           var html = messageBuildHTML(messageFormData);
           $('.messages').append(html);
-          $('form').get(9reset()
+          $('form').get(0).reset()
           $('.submit-btn').prop('disabled', false);
           scrollToBottom()
         })
