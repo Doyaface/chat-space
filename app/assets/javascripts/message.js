@@ -1,11 +1,10 @@
 $(document).on('turbolinks:load', function(){ 
   $(function(){
-    function messageBuildHTML(message){
-      var imagecheck =(message.image)
+    var imagecheck =(message.image)
                     ?` <img class="message__text__image" src=${message.image}> 
                     </img>`
                     :"";
-
+    function messageBuildHTML(message){
       var messageHTML =`<div class="message">
                 <div class="message__upper-info">
                   <div class="message__upper-info__talker">
@@ -51,5 +50,41 @@ $(document).on('turbolinks:load', function(){
           $('.form__submit').prop('disabled',false);
         })
       })
+    
+      var buildMessageHTML = function(message) {
+        var reloadHtml = `<div class="message" data-message_id= ${message.id} >
+                      <div class="message__upper-info">
+                        <div class="upper-message__user-name>
+                          <p class="message__upper-info_talker>
+                            ${ message.user.name }
+                          </p>
+                          <p class="message__upper-info__date>
+                            ${ message.created_at.strftime("%Y/%m/%d %H:%M")}
+                          </p>
+                          <div class="message__text>
+                            <p>
+                              ${ message.body }
+                            </p>
+                            ${ imagecheck }
+                          </div>`      
+                    return reloadHtml;
+  };
+
+
+      var reloadMessages = function(){
+        last_message_id = document.getElementById('data-message_id')
+  
+        $.ajax({
+          url: '/groups/:group_id/api/messages',
+          dataType: 'json',
+          data: {id: last_message_id}
+        })
+        .done(function(messaages){
+          console.log('success');
+        })
+        .fail(function(){
+          console.log('error');
+        });
+      }
   })
 });

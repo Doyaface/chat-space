@@ -1,5 +1,5 @@
+json.(@message, :content, :image)
+json.created_at format_posted_time(@message.created_at)
 json.user_name @message.user.name
-json.body @message.body
-json.time @message.created_at.strftime("%Y/%m/%d %H:%M")
+#idもデータとして渡す
 json.id @message.id
-json.image @message.image.url
