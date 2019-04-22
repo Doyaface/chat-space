@@ -54,24 +54,33 @@ $(document).on('turbolinks:load', function(){
     })
     
     var reloadMessages = function(){
+
+      if($('.messages')[0]){
+        var message_id = $('.messages:last').data('id');
+      } else {
+        var message_id = 0
+      }
+      var presentUrl = location.href
+      var apiUrl = presentUrl.replace(/message/g, "api/message")
       last_message_id = $('.message:last').data('message_id')
-      console.log(last_message_id)
       $.ajax({
-        url: '/groups/:group_id/api/messages',
+        url: apiUrl,
         type: 'GET',
         dataType: 'json',
         data: {id: last_message_id}
       })
 
-      .done(function(messaages){
+      .done(function(message){
+        console.log(message.id)
         var insertHTML = '';
-        messaages.forEach( function( message ){
+        message.forEach( function( message ){
             insertHTML += messageBuildHTML( message );
         });
         $('.messages').append(insertHTML);
         scrollToBottom()
       })
       .fail(function(){
+
         console.log('error');
       });
     }
