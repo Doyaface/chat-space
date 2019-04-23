@@ -71,17 +71,19 @@ $(document).on('turbolinks:load', function(){
       })
 
       .done(function(message){
-        console.log(message.id)
+        console.log(message)
         var insertHTML = '';
         message.forEach( function( message ){
             insertHTML += messageBuildHTML( message );
         });
         $('.messages').append(insertHTML);
-        scrollToBottom()
+          if (message.length !== 0){
+            scrollToBottom();
+          }
       })
       .fail(function(){
 
-        console.log('error');
+        console.log('自動更新に失敗しました。');
       });
     }
     setInterval(reloadMessages, 5000);
