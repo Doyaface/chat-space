@@ -71,7 +71,6 @@ $(document).on('turbolinks:load', function(){
       })
 
       .done(function(message){
-        console.log(message)
         var insertHTML = '';
         message.forEach( function( message ){
             insertHTML += messageBuildHTML( message );
@@ -83,7 +82,7 @@ $(document).on('turbolinks:load', function(){
       })
       .fail(function(){
 
-        console.log('自動更新に失敗しました。');
+        alert.log('自動更新に失敗しました。');
       });
     }
     setInterval(reloadMessages, 5000);
