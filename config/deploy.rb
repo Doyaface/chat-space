@@ -13,7 +13,7 @@ set :ssh_options, auth_methods: ['publickey'],
                   keys: ['~/.ssh/bt0222.pem']
 
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid"}
-set :unicorn_config_path, -> ( "#{current_path}/config/unicorn.rb")
+set :unicorn_config_path, -> {"#{current_path}/config/unicorn.rb"}
 set :keep_releases, 5
 
 after 'deploy:publishing', 'deploy:restart'
